@@ -12,29 +12,32 @@
   <body>
     
     <header>Welcome to Ntaoleng`s weather App!</header>
-    
-        <h1>
-            Johannesburg
-        </h1>
-      <div class="main">
+    <main>
+        
+      <div class="box">
         <form cass="search-form">
             <input
             type="search"
             placeholder="Enter a city.."
-            required cass="form-input"/>
+            required class="form-input"/>
              <input type="submit" value="Search" class="form-button"/>
         </form>
-         
+        <h1>
+            Johannesburg
+        </h1>
         <p>
+            <div class="weather-data">
             <div>
-           <strong> Today </strong> 23:12, moderate rain
+           <span> Today </span> 23:12, moderate rain
              <br/>
             Humidity:<strong>87%</strong>, Wind: <strong>7.2km/h</strong>
             </div>
-            <div>
-                ☀️24°C
+            <div class="temperature-container">
+              <span class="temp-emoji"> ☀️</span>
+              <span class="temp-value">24</span>
+              <span class="temp-unit">°C</span>
             </div>
-            
+        </div>
                 <ul>
                     <li>
                         Mon <br/> 🌥️ <br/> 23°C
@@ -57,13 +60,14 @@
                 </ul>
             
         </p>
-
+    </main>
     <footer>
         Coded by <a href="#" target="_blank">Ntaoleng.J Mabote</a> and is
           <a href="https://github.com/mabotejuliet-16" target="_blank"> on GitHub</a> and
           <a href="https://app.netlify.com/teams/mabotejuliet" target="_blank">hosted on Netlify</a>
     </footer>
-    </div>
+   
+</div>
     <script src="script.js"></script>
 
   </body>
