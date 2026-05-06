@@ -1,7 +1,39 @@
 function updateWeatherData(response) {
   let temperatureElement = document.querySelector(".temp-value");
   let temperature = response.data.temperature.current;
+  let city = document.querySelector("#app-city");
+  let descriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+
+  timeElement.innerHTML = formatDate(date);
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  descriptionElement.innerHTML = response.data.condition.description;
+  city.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
+  console.log(descriptionElement);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 }
 
 function searchCity(city) {
@@ -12,10 +44,10 @@ function searchCity(city) {
 function submitSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#form-input");
-  let city = document.querySelector("#app-city");
-  city.innerHTML = searchInput.value;
+
   searchCity(searchInput.value);
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitSearch);
+searchCity("Johannesburg");

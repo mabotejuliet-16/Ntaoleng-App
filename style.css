@@ -17,29 +17,30 @@ header {
   font-size: 50px;
   margin-top: 40px;
 }
-
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 15px 20px;
+  
+}
 .form-input {
-  width: 60%;
-  margin: 40px auto;
+  width: 50%;
+  font-size: 20px;
   background: #f8f8faf5;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
 }
+
 .form-button {
+  font-size: 20px;
   background: rgb(119, 119, 185);
   border-radius: 4px;
   border: none;
   color: white;
-  padding: 10px 15px;
-}
-ul {
-  background: rgb(241, 220, 224);
-  display: flex;
-  list-style: none;
-  gap: 15px;
-  border-radius: 15px;
 }
 .box {
+  background: rgb(141, 182, 196);
   max-width: 600px;
   margin: 40px auto;
   padding: 30px;
@@ -49,33 +50,30 @@ ul {
 footer {
   text-align: center;
 }
-.weather-data {
-  display: flex;
-  justify-content: space-between;
-}
 strong {
   color: rgb(184, 4, 34);
 }
-span {
+.day {
   font-size: 30px;
   line-height: 10px;
   font-weight: 500;
 }
-.temperature-container {
-  margin-top: -50px;
-  display: flex;
-}
 
+.temperature-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -80px;
+}
 .temp-emoji {
   font-size: 55px;
+  margin-top: -5px;
 }
 .temp-value {
-  font-weight: 900; /* No units needed here */
+  font-weight: 900;
   font-size: 60px;
-  margin-bottom: -20px; /* This should work to move the element up */
+  margin-bottom: -10px;
 }
 .temp-unit {
   font-weight: 500;
   font-size: 25px;
-  margin-top: -15px;
 }
