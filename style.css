@@ -22,7 +22,6 @@ form {
   justify-content: center;
   margin-top: 20px;
   padding: 15px 20px;
-  
 }
 .form-input {
   width: 50%;
@@ -39,6 +38,7 @@ form {
   border: none;
   color: white;
 }
+
 .box {
   background: rgb(141, 182, 196);
   max-width: 600px;
@@ -65,8 +65,7 @@ strong {
   margin-top: -80px;
 }
 .temp-emoji {
-  font-size: 55px;
-  margin-top: -5px;
+  margin-top: -20px;
 }
 .temp-value {
   font-weight: 900;
