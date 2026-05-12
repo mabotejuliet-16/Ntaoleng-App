@@ -54,7 +54,7 @@ strong {
   color: rgb(184, 4, 34);
 }
 .day {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 10px;
   font-weight: 500;
 }
@@ -75,4 +75,14 @@ strong {
 .temp-unit {
   font-weight: 500;
   font-size: 25px;
+}
+ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin-top: 35px;
+}
+.temps {
+  color: rgb(184, 4, 34);
 }

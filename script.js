@@ -16,7 +16,8 @@ function updateWeatherData(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   city.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
-  console.log(descriptionElement);
+
+  getForcast(response.data.city);
 }
 
 function formatDate(date) {
@@ -50,6 +51,31 @@ function submitSearch(event) {
   searchCity(searchInput.value);
 }
 
+function getForcast(city) {
+  let apiKey = "2b73f4b12btfbe34cedefo9a6e8a2fb0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForcast);
+}
+
+function displayForcast() {
+  let forcast = document.querySelector("#weather-forcast");
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  forcast.innerHTML = "";
+
+  days.forEach(function (day) {
+    forcast.innerHTML =
+      forcast.innerHTML +
+      `
+            <li class="day">
+              <span class="date">Tues</span> <br/>
+              <span class="icon">🌧️</span> <br/>
+              <span class="temps"><strong>20°</strong> 6°</span> </li>
+              `;
+  });
+}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitSearch);
+
 searchCity("Johannesburg");
+displayForcast();
