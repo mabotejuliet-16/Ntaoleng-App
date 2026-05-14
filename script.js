@@ -17,7 +17,7 @@ function updateWeatherData(response) {
   city.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
 
-  getForcast(response.data.city);
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -51,31 +51,43 @@ function submitSearch(event) {
   searchCity(searchInput.value);
 }
 
-function getForcast(city) {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+return days[date.getDay()];  
+}
+function getForecast(city) {
   let apiKey = "2b73f4b12btfbe34cedefo9a6e8a2fb0";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForcast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForcast() {
-  let forcast = document.querySelector("#weather-forcast");
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-  forcast.innerHTML = "";
+function displayForecast(response) {
+  
+  
 
-  days.forEach(function (day) {
-    forcast.innerHTML =
-      forcast.innerHTML +
-      `
+  let forecastHtml = "";
+
+    response.data.daily.forEach(function (day,index) {
+      if (index <5) {
+    forecastHtml =
+    forecastHtml + 
+    `
             <li class="day">
-              <span class="date">Tues</span> <br/>
-              <span class="icon">🌧️</span> <br/>
-              <span class="temps"><strong>20°</strong> 6°</span> </li>
+              <div class="date">${formatDay(day.time)}</div> 
+              <div ><img src="${day.condition.icon_url}"class="icon"/></div> 
+              <div class="temps"><strong>${Math.round(day.temperature.maximum)}°</strong> ${Math.round(day.temperature.minimum)}°</div> </li>
               `;
+      }
   });
+
+let forecast = document.querySelector("#weather-forecast");
+  forecast.innerHTML = forecastHtml;
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitSearch);
 
 searchCity("Johannesburg");
-displayForcast();
+displayForecast();
